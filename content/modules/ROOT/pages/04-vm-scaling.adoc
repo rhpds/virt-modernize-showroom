@@ -1,0 +1,129 @@
+= Module 2: VM Scaling and Performance
+include::vars.adoc[]
+
+== Know
+
+_TravelCorp's booking system needs to handle traffic spikes during peak travel seasons. OpenShift Virtualization provides both vertical and horizontal scaling capabilities for VMs without downtime._
+
+*Business Challenge:* Traditional VM scaling is manual, slow, and doesn't leverage modern cloud patterns:
+
+* *Manual Scaling* - Requires downtime for resource adjustments
+* *Over-provisioning* - Static allocation leads to wasted resources
+* *Slow Response* - Cannot quickly adapt to changing demand
+* *Limited Automation* - Scaling decisions require human intervention
+
+*The OpenShift Virtualization Scaling Solution:* OpenShift Virtualization provides enterprise-grade scaling capabilities:
+
+* *Vertical Scaling* - Live CPU and memory adjustments without downtime
+* *Horizontal Scaling* - VM pools for distributing workloads
+* *Resource Optimization* - Kubernetes scheduler optimizes VM placement
+* *Performance Monitoring* - Real-time metrics drive scaling decisions
+
+*Business Value for TravelCorp:*
+
+* *Dynamic Scaling* - Automatically respond to demand without manual intervention
+* *Zero-Downtime Operations* - Scale resources without service interruption
+* *Cost Efficiency* - Pay only for resources actually needed
+* *Performance Visibility* - Comprehensive monitoring and alerting
+
+[.bordershadow]
+image::vm-metrics-dashboard.png[width=800,link="self",window=_blank]
+
+== Show
+
+=== View Current VM Resources
+
+. Navigate to *Virtualization* → *Virtual Machines*
+
+. Click on the `travel-control` VM to view its current configuration
+
+. Note the current resource allocation:
+* CPU: 1 core
+* Memory: 2Gi
+* Current utilization levels
+
+=== Demonstrate Vertical Scaling (Scale Up)
+
+. Click on the *Configuration* tab
+
+. Click *Edit* next to the VM configuration
+
+. Modify the resources:
+* Change CPU from `1` to `2` cores
+* Change Memory from `2Gi` to `4Gi`
++
+[.bordershadow]
+image::increase-resources.png[width=600,link="self",window=_blank]
+
+. Click *Save* to apply changes
+
+. Observe that the VM continues running while resources are adjusted:
+* VM remains in `Running` state
+* New resources allocated live
+* No service interruption
+
+=== Verify Resource Changes
+
+. Click on the *Metrics* tab
+
+. Show the updated resource allocation:
+* CPU limit increased to 2 cores
+* Memory limit increased to 4Gi
+* Utilization graphs reflect new capacity
+
+. From the VM console, verify the changes:
++
+[source]
+----
+# Check CPU cores
+lscpu | grep "CPU(s):"
+# Check memory
+free -h
+----
++
+[.bordershadow]
+image::lscpu.png[width=600,link="self",window=_blank]
+
+=== Explore VM Pool for Horizontal Scaling
+
+. Navigate to *Virtualization* → *VirtualMachinePool*
+
+. Click on the `cars-vm-pool` to see horizontal scaling in action
++
+[.bordershadow]
+image::vm-pool.png[width=800,link="self",window=_blank]
+
+. Show key horizontal scaling features:
+* Multiple VM replicas running the same workload
+* Load balancing across VM instances
+* Automatic scaling based on demand
+
+=== Monitor Scaling Performance
+
+. Navigate to *Observe* → *Dashboards*
+
+. Open the *OpenShift Virtualization* dashboard
+
+. Show comprehensive VM performance metrics:
+* Resource utilization across all VMs
+* Performance trends and patterns
+* Capacity planning insights
++
+[.bordershadow]
+image::vm-metrics-dashboard.png[width=800,link="self",window=_blank]
+
+=== Test Application Performance
+
+. Access the Travel application to verify performance improvements
+
+. Navigate to the application URL and test different features:
+* Booking searches respond faster
+* Multiple concurrent users supported
+* System handles increased load
+
+*Key Takeaways:*
+
+* Live resource scaling without downtime or service interruption
+* Both vertical (scale-up) and horizontal (scale-out) options available
+* Comprehensive monitoring enables data-driven scaling decisions
+* Cost optimization through dynamic resource allocation

@@ -1,0 +1,146 @@
+= Module 3: Service Mesh Integration  
+include::vars.adoc[]
+
+== Know
+
+_TravelCorp needs unified security and observability across their hybrid architecture. OpenShift Service Mesh treats VMs as first-class citizens, providing automatic mTLS, traffic management, and complete observability._
+
+*Business Challenge:* VMs lack modern observability, security, and traffic management capabilities:
+
+* *Security Gaps* - No mTLS encryption between VM and container communications
+* *Limited Visibility* - Separate monitoring stacks for VMs and containers
+* *Traffic Management* - Manual load balancing and routing configuration
+* *Compliance Challenges* - Inconsistent security policies across workloads
+
+*The Service Mesh Solution:* OpenShift Service Mesh integrates VMs seamlessly into the mesh:
+
+* *Automatic mTLS* - Zero-trust encryption between all workloads
+* *Unified Observability* - Complete tracing, metrics, and topology visibility
+* *Intelligent Traffic Management* - Dynamic routing and load balancing
+* *Policy Enforcement* - Consistent security policies across VMs and containers
+
+*Business Value for TravelCorp:*
+
+* *Zero-Trust Security* - Automatic mTLS encryption protects all communications
+* *Complete Observability* - End-to-end visibility across the entire application stack
+* *Operational Efficiency* - Unified platform reduces complexity and tools
+* *Compliance Ready* - Consistent security policies and audit trails
+
+[.bordershadow]
+image::01-OSSM-ServiceMesh.png[width=800,link="self",window=_blank]
+
+== Show
+
+=== Access Service Mesh Observability Tools
+
+. From the OpenShift console, navigate to *Networking* → *Service Mesh*
+
+. Access the link:{ocp4_virt_kiali_url}[*Kiali*,window=_blank] dashboard
++
+[source,subs=attributes]
+----
+Username: {ocp4_virt_username}
+Password: {ocp4_virt_password}
+----
+
+=== Explore Application Topology
+
+. In Kiali, navigate to *Graph* view
+
+. Select the `travel-agency` namespace
+
+. Show the complete application topology:
+* VMs (travel-control, cars-vm) integrated with containers
+* Service-to-service communication patterns
+* Traffic flow between VMs and microservices
++
+[.bordershadow]
+image::06-t2-ossm-travel-agency.gif[width=800,link="self",window=_blank]
+
+. Point out key elements:
+* *VMs as first-class citizens* - Treated equally with containerized services
+* *mTLS indicators* - Green locks showing encrypted communications
+* *Traffic flow* - Real-time visualization of service interactions
+
+=== Verify mTLS Security
+
+. Click on any edge between services in the graph
+
+. Show the security indicators:
+* *mTLS enabled* - Automatic encryption between all workloads
+* *Security policies* - Consistent enforcement across VMs and containers
++
+[.bordershadow]
+image::07-t2-mtls-enabled.png[width=600,link="self",window=_blank]
+
+. Navigate to *Security* → *mTLS Status* to see comprehensive security overview
+
+=== Examine Real-time Metrics
+
+. Click on the `travel-control` VM node in the topology
+
+. View detailed metrics:
+* Request rates and response times
+* Error rates and success ratios
+* Traffic patterns and dependencies
++
+[.bordershadow]
+image::08-t2-kiali-metrics.gif[width=800,link="self",window=_blank]
+
+=== Explore Distributed Tracing
+
+. Access *Jaeger* from the Service Mesh menu
+
+. Search for traces involving VM services:
+* Set service to `travel-control`
+* Look for traces spanning VMs and containers
++
+[.bordershadow]
+image::09-t2-jaeger-tracing.gif[width=800,link="self",window=_blank]
+
+. Click on a trace to see:
+* Complete request journey across VMs and containers
+* Performance bottlenecks and latency analysis
+* Error propagation and root cause analysis
+
+=== View Unified Monitoring in Grafana
+
+. Access *Grafana* from the monitoring tools
+
+. Open the *Istio Service Mesh* dashboard
++
+[.bordershadow]
+image::10-t2-grafana-mesh-dashboard-with-data.png[width=800,link="self",window=_blank]
+
+. Show comprehensive metrics:
+* *Unified view* - VMs and containers in same dashboard
+* *Performance metrics* - Request rates, latency, and error rates
+* *Capacity planning* - Resource utilization and trending
+
+=== Test Service-to-Service Communication
+
+. Generate some application traffic by using the Travel application
+
+. Return to Kiali and observe:
+* Real-time traffic flow updates
+* Performance metrics changing dynamically
+* Health status of all services including VMs
+
+=== Validate Configuration and Policies
+
+. In Kiali, navigate to *Istio Config*
+
+. Show the configuration validation:
+* Service mesh policies applied to VMs
+* Configuration health and validation status
+* Consistent policy enforcement
++
+[.bordershadow]
+image::07-t2-kiali-configs.gif[width=800,link="self",window=_blank]
+
+*Key Takeaways:*
+
+* VMs are fully integrated into the service mesh as first-class citizens
+* Automatic mTLS encryption secures all VM communications
+* Unified observability provides complete visibility across hybrid workloads
+* Consistent security policies and governance across the entire platform

@@ -1,0 +1,111 @@
+= Module 1: VM Foundations in OpenShift
+include::vars.adoc[]
+
+== Know
+
+_TravelCorp's legacy booking system runs on VMs but lacks modern platform capabilities. OpenShift Virtualization transforms these VMs into first-class Kubernetes citizens without requiring application changes._
+
+*Business Challenge:* Organizations have critical applications running on VMs that need modern platform capabilities without complete rewriting:
+
+* *Isolated Operations* - VMs managed separately from containerized workloads
+* *Limited Automation* - Manual provisioning, scaling, and lifecycle management
+* *Security Gaps* - Missing modern security features like zero-trust networking
+* *Operational Overhead* - Multiple tools and teams for different workload types
+
+*The OpenShift Virtualization Solution:* OpenShift Virtualization enables VMs to run as Kubernetes objects, providing:
+
+* *Unified Management* - VMs and containers managed through same platform
+* *Kubernetes-Native Operations* - VM lifecycle managed declaratively
+* *Enterprise Features* - Built-in HA, monitoring, networking, and security
+* *Gradual Modernization* - Containerize applications at your own pace
+
+*Business Value for TravelCorp:*
+
+* *No Application Rewrites* - Keep existing VM workloads while gaining cloud-native capabilities
+* *Operational Efficiency* - 60% reduction in platform management complexity
+* *Cost Optimization* - Better resource utilization through Kubernetes scheduling
+* *Future-Proof Architecture* - Clear path to full containerization when ready
+
+== Show
+
+=== Access OpenShift Console
+
+. Open in your browser the OpenShift Console
++
+[source,subs=attributes]
+----
+Console: {ocp4_virt_console_url}
+Username: {ocp4_virt_username}
+Password: {ocp4_virt_password}
+----
+
+. Click *Log in* to access the OpenShift web console
+
+=== Explore OpenShift Virtualization Dashboard
+
+. In the OpenShift console, navigate to *Virtualization* in the left menu
+
+. Click on *Virtual Machines* to see the VMs overview
++
+[.bordershadow]
+image::vms-overview.png[width=800,link="self",window=_blank]
+
+. Point out key elements:
+* VMs running alongside containers in the same cluster
+* Unified resource management and monitoring
+* Kubernetes-native VM status and lifecycle
+
+=== Examine the Travel Application Architecture
+
+. Navigate to *Workloads* → *Pods* and filter by `travel-portal` namespace
+
+. Show the hybrid architecture:
+* Containerized microservices (travels, viaggi, voyages)
+* VM-based services (travel-control, cars-vm)
+* All managed through the same platform
+
+=== Demonstrate VM Management
+
+. Click on the `travel-control` VM to view details
++
+[.bordershadow]
+image::vm-detail.png[width=800,link="self",window=_blank]
+
+. Show key VM management features:
+* *Console access* - VNC and SSH access to the VM
+* *Metrics* - CPU, memory, network, and storage metrics
+* *Events* - Kubernetes events for VM lifecycle
+* *Configuration* - VM specs managed as Kubernetes resources
+
+=== View VM Performance and Health
+
+. Click on the *Metrics* tab for the VM
++
+[.bordershadow]
+image::vm-metrics.png[width=800,link="self",window=_blank]
+
+. Demonstrate unified monitoring:
+* Real-time resource utilization
+* Historical performance data
+* Integration with Prometheus and Grafana
+* Same monitoring stack as containers
+
+=== Test VM Connectivity
+
+. Click on the *Console* tab and access the VM terminal
+
+. Test application connectivity:
++
+[source,bash]
+----
+curl -s http://travel-control:8080/health | jq
+----
+
+. Verify the VM is serving traffic and integrated with the application
+
+*Key Takeaways:*
+
+* VMs operate as first-class Kubernetes citizens
+* Unified management reduces operational complexity
+* Modern monitoring and observability for VM workloads
+* No application changes required for modernization benefits

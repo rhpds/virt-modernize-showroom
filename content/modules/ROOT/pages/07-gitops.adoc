@@ -1,0 +1,165 @@
+= Module 5: GitOps Automation
+include::vars.adoc[]
+
+== Know
+
+_TravelCorp wants to manage their VM configurations the same way they manage containerized applications - through Git with automated deployment and rollback capabilities. OpenShift GitOps makes VMs fully manageable through declarative configuration._
+
+*Business Challenge:* VM management is manual, inconsistent, and lacks automation:
+
+* *Manual Configuration* - VM setup requires human intervention and is error-prone
+* *Configuration Drift* - VMs diverge from intended state over time
+* *No Version Control* - Changes lack traceability and rollback capabilities
+* *Inconsistent Deployments* - Different configurations across environments
+
+*The GitOps Solution:* OpenShift GitOps brings Infrastructure as Code to VM management:
+
+* *Declarative Configuration* - VMs defined in Git repositories as YAML
+* *Automated Synchronization* - ArgoCD keeps VMs aligned with Git state
+* *Drift Detection* - Automatic identification and correction of configuration changes
+* *Complete Auditability* - Full history of all changes with rollback capabilities
+
+*Business Value for TravelCorp:*
+
+* *Infrastructure as Code* - Version-controlled VM configurations
+* *Automated Operations* - Reduce manual tasks and eliminate human error
+* *Compliance and Audit* - Complete traceability of all infrastructure changes
+* *Consistent Deployments* - Identical VM configurations across all environments
+
+[.bordershadow]
+image::gitops-architecture.png[width=800,link="self",window=_blank]
+
+== Show
+
+=== Access ArgoCD Dashboard
+
+. From the OpenShift console, navigate to *GitOps* → *ArgoCD*
+
+. Click on the ArgoCD instance to access the dashboard
++
+[source,subs=attributes]
+----
+Username: {ocp4_virt_username}
+Password: {ocp4_virt_password}
+----
++
+[.bordershadow]
+image::argo-login.png[width=800,link="self",window=_blank]
+
+=== Explore GitOps Applications
+
+. In the ArgoCD dashboard, view the existing applications
++
+[.bordershadow]
+image::argo-dashboard.png[width=800,link="self",window=_blank]
+
+. Click on the `travel-agency` application to see:
+* Git repository source
+* Target OpenShift cluster
+* Synchronization status
+* Health of managed resources
+
+=== Examine VM GitOps Configuration
+
+. Click on the `travel-control` VM application
++
+[.bordershadow]
+image::argo-travel-agency.png[width=800,link="self",window=_blank]
+
+. Show the GitOps configuration:
+* *Source* - Git repository containing VM definitions
+* *Destination* - Target namespace and cluster
+* *Sync Policy* - Automatic or manual synchronization
+
+=== View VM as Code
+
+. Click on the *App Details* to see the VM configuration
+
+. Show the YAML definition:
+* VM specifications defined declaratively
+* Resource requirements, networking, storage
+* Same format as Kubernetes resources
++
+[.bordershadow]
+image::argo-app-detail.png[width=800,link="self",window=_blank]
+
+=== Demonstrate Configuration Management
+
+. Navigate to *Repository* view to see the Git source
+
+. Show the directory structure:
+* `virtual-machines/` folder containing VM definitions
+* `configs/` folder with ConfigMaps and Secrets
+* `network/` folder with Service and Ingress definitions
+
+=== Test Automated Synchronization
+
+. Make a change to the VM configuration in Git:
+* Modify CPU or memory allocation
+* Change environment variables
+* Update service configuration
+
+. Return to ArgoCD and observe:
+* Application shows `OutOfSync` status
+* Diff view shows exact changes
+* Auto-sync (if enabled) applies changes automatically
+
+=== Monitor Synchronization Process
+
+. Watch the synchronization process:
++
+[.bordershadow]
+image::auto-sync.png[width=600,link="self",window=_blank]
+
+. Show the deployment phases:
+* *Syncing* - ArgoCD applies Git changes
+* *Progressing* - Kubernetes updates resources
+* *Healthy* - All resources running successfully
+
+=== Explore Application Health
+
+. Click on different resource types to see health status:
+* *VirtualMachine* - VM running status
+* *Service* - Network connectivity  
+* *ConfigMap* - Configuration health
++
+[.bordershadow]
+image::argo-carsvm-detail.png[width=800,link="self",window=_blank]
+
+=== Demonstrate Rollback Capabilities
+
+. Navigate to *History and Rollback*
+
+. Show previous revisions:
+* Git commit information
+* Deployment timestamps
+* Configuration differences
+
+. Perform a rollback to a previous version:
+* Select previous revision
+* Click *Rollback*
+* Observe automatic reversion to previous state
+
+=== View Audit Trail
+
+. Navigate to *Activity* tab to see complete audit trail:
+* Who made changes and when
+* Git commit messages and authors
+* Deployment success/failure history
++
+[.bordershadow]
+image::travel-control-detail.png[width=800,link="self",window=_blank]
+
+=== Validate Configuration Compliance
+
+. Show compliance features:
+* *Policy Enforcement* - Only approved configurations can be deployed
+* *Environment Consistency* - Same configuration across dev/staging/prod
+* *Change Approval* - Pull request workflow for infrastructure changes
+
+*Key Takeaways:*
+
+* VMs are managed declaratively through Git repositories
+* Automated synchronization eliminates configuration drift
+* Complete audit trail provides compliance and governance
+* Infrastructure changes follow same DevOps practices as application code

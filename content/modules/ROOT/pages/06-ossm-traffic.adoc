@@ -1,0 +1,149 @@
+= Module 4: Advanced Traffic Management
+include::vars.adoc[]
+
+== Know
+
+_TravelCorp wants to deploy new versions of their booking service safely without disrupting customers. Service Mesh enables advanced deployment patterns like canary releases and circuit breakers for VM-based services._
+
+*Business Challenge:* Legacy applications need modern deployment patterns and resilience features:
+
+* *Risky Deployments* - All-or-nothing releases can impact entire user base
+* *No Failover* - Single points of failure cause service disruptions
+* *Manual Testing* - Limited ability to test new versions with real traffic
+* *Cascade Failures* - Service failures propagate throughout the system
+
+*The Advanced Traffic Management Solution:* Service Mesh provides enterprise-grade traffic management for VMs:
+
+* *Canary Deployments* - Test new VM versions with subset of traffic
+* *Circuit Breakers* - Automatic failover when services become unhealthy
+* *Traffic Splitting* - Precise control over request routing
+* *Ingress Gateway* - Secure external access with policy enforcement
+
+*Business Value for TravelCorp:*
+
+* *Risk-Free Deployments* - Test new versions with minimal user impact
+* *Automatic Failover* - Self-healing systems reduce downtime
+* *Modern DevOps Practices* - Apply cloud-native patterns to legacy applications
+* *Enhanced Reliability* - Circuit breakers prevent cascade failures
+
+[.bordershadow]
+image::canary-01.png[width=800,link="self",window=_blank]
+
+== Show
+
+=== Set Up Ingress Gateway
+
+. In Kiali, navigate to the *Graph* view for `travel-agency` namespace
+
+. Show the current ingress configuration:
+* External traffic enters through Istio Gateway
+* Traffic routed to internal services including VMs
++
+[.bordershadow]
+image::01-m4-t1-ingress-control.gif[width=800,link="self",window=_blank]
+
+. Navigate to *Istio Config* to view gateway configuration:
+* Security policies at the gateway level
+* External access controls
+
+=== Demonstrate Canary Deployment
+
+. Access the current version of the cars service
++
+[source]
+----
+# Test current version
+curl -H "Host: travel-agency.example.com" http://istio-gateway/cars/
+----
+
+. Navigate to *Workloads* → *Virtual Machines*
+
+. Show that there are now two versions of the cars VM:
+* `cars-vm-v1` - Current production version
+* `cars-vm-v2` - New canary version
++
+[.bordershadow]
+image::03-m4-t3-2-v2-endpoints.png[width=600,link="self",window=_blank]
+
+=== Configure Traffic Splitting
+
+. In Kiali, view the *Istio Config* for the cars service
+
+. Show the VirtualService configuration that splits traffic:
+* 90% traffic to v1 (stable version)
+* 10% traffic to v2 (canary version)
++
+[.bordershadow]
+image::02-m4-t2-separate-v1-v2-traffic.gif[width=800,link="self",window=_blank]
+
+=== Test Canary Traffic Distribution
+
+. Generate multiple requests to observe traffic distribution:
++
+[source]
+----
+# Generate 20 requests to see traffic split
+for i in {1..20}; do
+  curl -s -H "Host: travel-agency.example.com" \
+    http://istio-gateway/cars/ | grep version
+done
+----
+
+. Show results:
+* ~90% requests go to v1
+* ~10% requests go to v2
+* Precise traffic control enables safe testing
+
+=== Implement Circuit Breaker
+
+. Navigate to the VM showing issues (simulate failure)
+
+. Show the DestinationRule configuration for circuit breaking:
+* Maximum connections per VM
+* Consecutive error thresholds  
+* Ejection time for unhealthy instances
++
+[.bordershadow]
+image::05-m4-t3-circuit-breaker.gif[width=800,link="self",window=_blank]
+
+=== Test Circuit Breaker Behavior
+
+. Simulate VM failure by stopping the `cars-vm-v2` instance
+
+. Generate traffic and observe:
+* Circuit breaker detects failures
+* Traffic automatically redirected to healthy instances
+* Service remains available despite VM failure
+
+=== Monitor Advanced Traffic Patterns
+
+. In Kiali, observe the real-time traffic flow:
+* Traffic split percentages displayed
+* Healthy vs unhealthy service indicators
+* Automatic failover behavior visualization
+
+. Access Grafana to see traffic management metrics:
+* Success rates by version
+* Circuit breaker activation events
+* Response time improvements
+
+=== Configure Advanced Routing
+
+. Show additional routing capabilities:
+* *Header-based routing* - Route based on user agent or custom headers
+* *Geographic routing* - Direct traffic based on source location
+* *Weighted routing* - Gradual rollout with increasing traffic percentages
+
+=== Validate Security at the Gateway
+
+. Show the security policies enforced at ingress:
+* Rate limiting to prevent DoS attacks
+* Authentication and authorization policies
+* mTLS termination at the gateway
+
+*Key Takeaways:*
+
+* Advanced deployment patterns available for VM-based applications
+* Circuit breakers provide automatic failover and system resilience
+* Precise traffic control enables safe testing and gradual rollouts
+* Enterprise-grade security and policy enforcement at all traffic entry points

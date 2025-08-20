@@ -26,20 +26,20 @@ include::vars.adoc[]
 
 *IT Leadership (10 minutes):*
 
-* Module 1: VM Modernization Foundation (4 min)
+* Module 1: VM Foundations in OpenShift (4 min)
 * Module 3: Service Mesh Integration (4 min)
 * Business value summary (2 min)
 
 *Technical Teams (15 minutes):*
 
-* Module 1: VM Modernization Foundation (3 min)
+* Module 1: VM Foundations in OpenShift (3 min)
 * Module 3: Service Mesh Integration (4 min)
 * Module 4: Advanced Traffic Management (4 min)
 * Module 5: GitOps Automation (4 min)
 
 *Security Focus (12 minutes):*
 
-* Module 1: VM Modernization Foundation (3 min)
+* Module 1: VM Foundations in OpenShift (3 min)
 * Module 3: Service Mesh Integration (5 min)
 * Module 4: Advanced Traffic Management (4 min)
 
