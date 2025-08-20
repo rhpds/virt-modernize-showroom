@@ -1,11 +1,7 @@
 = How to Use This Demo Guide
-:source-highlighter: rouge
-:toc: macro
-:toclevels: 1
+include::vars.adoc[]
 
-toc::[]
-
-This guide helps sales engineers and technical presenters deliver an effective {{ Product | Solution }} demonstration to customers.
+This guide helps sales engineers and technical presenters deliver an effective OpenShift Virtualization with Service Mesh and GitOps demonstration to customers.
 
 Every demo is different and you will have to adapt this guide to your specific needs.
 For instance, if you have less than the noted amount of time, you can skip some of the sections.
@@ -13,27 +9,31 @@ For instance, if you have less than the noted amount of time, you can skip some 
 The following sections will help you understand the guide and how to use it to prepare and execute the demo.
 
 == Demo Overview
-The **Demo Overview** section will provide an overview of the demo, the background or use case, and benefits to the customer.
-It will also provide some presentation tips and common customer questions that you might receive. 
+The **Demo Overview** section provides background, use case, and benefits to the customer.
 
-IMPORTANT: You need to read this section thoroughly to understand the background of the demo and the business context.
+IMPORTANT: Read the **Demo Overview** thoroughly to understand the scenario and the business context.
 
-These demos are meant to focus on the business value rather than the technical details.
-You are, of course, welcome to dive into the technical details if the customer asks for it.
-However, it is better to avoid focusing on the low level details in most cases.
+=== Background
+Modern enterprises are struggling to modernize their VM-based applications while maintaining operational efficiency. They need to leverage cloud-native capabilities without completely rewriting their applications.
+
+=== Business Outcomes
+* VM modernization without application rewrites
+* Unified platform management for VMs and containers
+* Enterprise-grade security with zero-trust networking
+* 60% reduction in operational complexity
+* Automated VM lifecycle management and scaling
+
+=== Module Paths Based on Customer Focus
+* Module 1 (VM Modernization Foundation) for IT leadership and infrastructure teams
+* Module 2 (VM Scaling) for operations and infrastructure teams
+* Module 3 (Service Mesh Integration) for security and platform engineering teams
+* Module 4 (Advanced Traffic Management) for application and DevOps teams
+* Module 5 (GitOps Automation) for platform engineering and compliance teams
+
+All paths deliver the same outcome: modernized VM operations with cloud-native capabilities.
 
 == Demo Details
-The **Demo Details** section will provide a single location to find technical details for the demo.
-Here you will find:
-
-* Proposed timing for the demo
-* Products and versions
-* Credentials
-* Troubleshooting common issues
-* Follow-up resources
-* Authors and contact information
-
-IMPORTANT: TODO: Add a link to the anchors on the demo details page.
+The **Demo Details** section contains technical requirements, proposed timing, credentials, and troubleshooting tips. See xref:02-details.adoc[Demo Details] for the complete breakdown.
 
 == Demo Modules
 This is the main content of the demo.
@@ -58,4 +58,5 @@ There will be less narrative in these sections with the focus on what you need t
 Unless otherwise noted, you need to follow the steps in the **Show** section in order.
 
 == Next Steps
-Get started by reading the **Demo Overview** section!
+Read the **Demo Overview** and **Demo Details**.  
+Choose the appropriate modules based on the customer's priorities and time constraints, then follow the **Know** and **Show** steps to deliver the demo.

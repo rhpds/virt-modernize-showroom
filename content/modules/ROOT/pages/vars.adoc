@@ -1,0 +1,14 @@
+// Here are the variables used in the asciidoc / antora content.
+// They are defined here to decouple the vars injected in antora.yaml.
+:ocp4_virt_openshift_version: 4.19+
+:ocp4_virt_virtualization_version: 4.19
+:ocp4_virt_ossm_version: 3+
+:ocp4_virt_gitops_version: 1.17
+
+:ocp4_virt_console_url: {openshift_console_url}
+:ocp4_virt_username: {openshift_cluster_admin_username}
+:ocp4_virt_password: {openshift_cluster_admin_password}
+
+:ocp4_virt_kiali_url: https://kiali-istio-system.{openshift_cluster_ingress_domain}
+:ocp4_virt_grafana_url: https://grafana-istio-system.{openshift_cluster_ingress_domain}
+:ocp4_virt_argocd_url: {openshift_gitops_server}

@@ -1,68 +1,113 @@
-= {{ Product | Solution }} Demo Details
-:toc:
-:toc-placement: preamble
-:icons: font
+= Demo Details
+include::vars.adoc[]
 
 == Proposed Timing
-For example:
+
 **Opening (5 minutes):**
 
-* Discuss background and introduct use case
-* "Start at the end" describing the solution to the problem
+* Introduce TravelCorp use case and current challenges
+* Show end result: unified VM and container management
+* Set the business context for modernization without rewrites
 
-**Technical Demo (10-15 minutes):**
+**Technical Demo (30–40 minutes):**
 
-* Follow the guide and demo the solution.
-* Focus on automation and business velocity, not just technical features.
-* Each part has a **Know** and most parts have a **Show** section.
+* Follow the modular approach based on audience
+* Select 2-4 modules depending on time and customer priorities
+* Focus on business value and operational efficiency
+* Each module includes **Know** section for context and **Show** section for demonstration
 
-**Closing (5-10+ minutes):**
+**Closing (5–10 minutes):**
 
-* Repeat the problem and emphasize how the solution solved that problem
-* Move from the imaginary problem to the customer's real problem
-* Save time for questions and interationss!
+* Summarize how OpenShift Virtualization solves VM modernization challenges
+* Connect demo scenarios to customer's real environment
+* Allow time for Q&A and next steps discussion
+
+== Module Selection by Audience
+
+*IT Leadership (10 minutes):*
+
+* Module 1: VM Modernization Foundation (4 min)
+* Module 3: Service Mesh Integration (4 min)
+* Business value summary (2 min)
+
+*Technical Teams (15 minutes):*
+
+* Module 1: VM Modernization Foundation (3 min)
+* Module 3: Service Mesh Integration (4 min)
+* Module 4: Advanced Traffic Management (4 min)
+* Module 5: GitOps Automation (4 min)
+
+*Security Focus (12 minutes):*
+
+* Module 1: VM Modernization Foundation (3 min)
+* Module 3: Service Mesh Integration (5 min)
+* Module 4: Advanced Traffic Management (4 min)
 
 == Products and Versions
-Add a table with the products and versions used in the demo.
 
 [cols="3,1"]
 |===
 |Product Name |Product Version
 
-|OpenShift |4.19
-|Advanced Developer Suite |1.1
+|Red Hat OpenShift |{ocp4_virt_openshift_version}
+|OpenShift Virtualization |{ocp4_virt_virtualization_version}
+|Red Hat OpenShift Service Mesh |{ocp4_virt_ossm_version}
+|Red Hat OpenShift GitOps |{ocp4_virt_gitops_version}
 |===
 
 == Credentials
-Add a table with the list of credentials here.
-They will also be included in the **Show** sections, but include them here for convenience.
 
 [cols="2,1,1"]
 |===
 |System/URL |Username |Password
 
-|https://console.example.com[OpenShift Console^] |admin |password123
-|https://api.example.com[OpenShift API^] |user |secret456
+|link:{ocp4_virt_console_url}[OpenShift Console^] |{ocp4_virt_username} |{ocp4_virt_password}
+|link:{ocp4_virt_kiali_url}[Kiali Dashboard^] |{ocp4_virt_username} |{ocp4_virt_password}
+|link:{ocp4_virt_grafana_url}[Grafana Dashboard^] |{ocp4_virt_username} |{ocp4_virt_password}
+|link:{ocp4_virt_argocd_url}[ArgoCD Console^] |use openshfit |use openshfit
 |===
 
 == Troubleshooting Common Issues
-Add a list of common issues that you might encounter and how to solve them.
 
-* Thing x fails
-** Fix it by doing a
-* Thing y fails
-** Fix it by doing b
+*VM startup failures:*
+
+* Check OpenShift Virtualization operator status
+* Verify sufficient cluster resources (CPU, memory)
+* Confirm VM image accessibility and permissions
+
+*Service Mesh connectivity issues:*
+
+* Validate Istio sidecar injection for VMs
+* Check ServiceMesh member configuration
+* Verify network policies and security contexts
+
+*GitOps synchronization problems:*
+
+* Confirm Git repository connectivity
+* Check ArgoCD application health status
+* Validate YAML syntax in Git configurations
+
+*Performance or monitoring gaps:*
+
+* Verify Prometheus scraping configuration
+* Check Grafana data source connectivity
+* Confirm Jaeger trace collection setup
+
+*Authentication errors:*
+
+* Validate OpenShift user permissions
+* Check service account configurations
+* Verify RBAC policy assignments
 
 == Follow-up Resources
-Include a curated list of other resources that are relevant to the demo.
+
+* https://docs.redhat.com/en/documentation/openshift_container_platform[OpenShift Product Documentation^]
+* https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp4_virt_virtualization_version}/html/virtualization[OpenShift Virtualization Documentation^]
+* https://docs.redhat.com/en/documentation/red_hat_openshift_gitops/{ocp4_virt_gitops_version}/html/understanding_openshift_gitops/about-redhat-openshift-gitops[OpenShift GitOps Documentation^]
+* https://kiali.io/docs/[Kiali Documentation^]
 
 == Authors and Contact Information
-For questions or feedback about the content of this demo, please contact the authors:
 
-* Slack channel
-* Author list
+For content-related and technical environment questions:
 
-For technical issues, reach out to Red Hat Demo Platform team:
-
-* Slack channel
-* Ticket link
+* Slack: `#forum-demo-redhat-com`

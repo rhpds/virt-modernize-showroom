@@ -1,35 +1,82 @@
-= {{ Product | Solution }} Demo Overview
-:toc:
-:toc-placement: preamble
-:icons: font
-
-{{ Product | Solution }} does X to solve Y.
+= Demo Overview
+include::vars.adoc[]
 
 == Background
-Give the scenario.
+OpenShift Virtualization with Service Mesh and GitOps modernizes virtual machine operations by integrating them seamlessly with cloud-native technologies, enabling enterprises to achieve modern platform capabilities without rewriting applications.
 
-ACME inc is a company that takes too long to deploy new services.
-They are looking for ways to increase velocity.
-etc.
+TravelCorp is a travel agency with a hybrid architecture consisting of both containerized microservices and legacy virtual machines that handle critical business functions like booking systems and payment processing.
+
+Their current challenges include:
+
+* Isolated VM management requiring separate tooling and processes
+* Limited observability and security for VM-based workloads
+* Manual VM scaling and deployment processes
+* Lack of unified governance across VMs and containers
+* Difficulty applying modern DevOps practices to legacy workloads
 
 == Problem
-ACME inc is a company that takes too long to deploy new services.
-They are looking for ways to increase velocity.
-etc.
+Traditional VM operations result in:
 
+* **Operational complexity** - Managing two separate platforms (VMs and containers)
+* **Security gaps** - VMs lack modern security capabilities like mTLS and policy enforcement
+* **Limited visibility** - No unified observability across the entire application stack
+* **Manual processes** - Slow, error-prone deployments and scaling
+* **Compliance challenges** - Difficulty maintaining consistent governance across workloads
 
-Benefits to the customer:
+== Benefits to the Customer
 
+*Modernize Without Risk:*
 
-Common Customer Questions to be ready for
-**"How does this work with our existing tools?"**
-→ Show Jenkins path (Module 4) - enhances rather than replaces existing investments
+* Keep existing VM-based applications while gaining cloud-native capabilities
+* Gradual migration path allows containerization at your own pace
+* No application rewrites required
 
-**"What about compliance and security?"**
-→ Emphasize automated policy enforcement and SOC 2/PCI readiness
+*Unified Operations:*
 
-**"How complex is the implementation?"**
-→ Highlight self-service templates and zero-configuration developer experience
+* Single platform management for VMs and containers
+* Consistent tooling, processes, and skills across all workloads
+* Reduced operational complexity and training costs
 
-**"What's the business impact timeline?"**
-→ Reference ACME's 4-week transformation and quantified results
+*Enterprise Security:*
+
+* Automatic mTLS encryption between all workloads
+* Unified security policies across VMs and containers
+* Zero-trust networking with microsegmentation
+
+*Operational Efficiency:*
+
+* Kubernetes-native VM lifecycle management
+* Automated scaling and resource optimization
+* GitOps-driven deployment and configuration management
+
+*Complete Observability:*
+
+* End-to-end tracing across VMs and containers
+* Unified metrics and monitoring dashboards
+* Service topology visualization including VMs
+
+== Common Customer Questions to be Ready For
+
+*How does this work with our existing VM infrastructure?*
+
+* OpenShift Virtualization runs VMs as Kubernetes objects alongside containers
+* Existing VM images can be migrated with minimal changes
+* Maintains VM performance while adding cloud-native capabilities
+
+*What about security and compliance for VMs?*
+
+* Service Mesh provides automatic mTLS encryption for VM communications
+* Unified policy enforcement across all workloads
+* Complete audit trails and compliance reporting
+
+*How complex is the implementation?*
+
+* VMs become Kubernetes resources managed declaratively
+* GitOps automation reduces manual intervention
+* Self-service capabilities through templates and catalogs
+
+*What's the migration timeline and business impact?*
+
+* Immediate benefits: unified management and enhanced security
+* Progressive modernization: containerize components when ready
+* Proven results: 60% reduction in operational complexity

@@ -1,21 +1,19 @@
 name: modules
-title: Default Title
+title: OpenShift Virtualization with Service Mesh and GitOps 
 version: master
 nav:
   - modules/ROOT/nav.adoc
 
 start_page: ROOT:00-index.adoc
 
+# DO NOT USE these vars in your asciidoc content.
+# Use the vars defined in the vars.adoc file instead.
+# These vars should be referenced only in the vars.adoc file.
 asciidoc:
   attributes:
-    lab_name: "I'm the lab_name var"
-    release-version: master
     page-pagination: true
-    my_var: "foo"
-    guid: my-guid
-    ssh_user: devops
-    ssh_password: devops
-    ssh_command: ssh someone@example.com
-    page-links:
-    - url: https://redhat.com
-      text: Red Hat
+    openshift_console_url: https://console.apps.cluster.example.com
+    openshift_cluster_admin_username: user
+    openshift_cluster_admin_password: password
+    openshift_cluster_ingress_domain: apps.cluster.example.com
+    openshift_gitops_server: https://openshift-gitops-server-openshift-gitops.apps.cluster.example.com
