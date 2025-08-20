@@ -4,6 +4,8 @@ version: master
 nav:
   - modules/ROOT/nav.adoc
 
+start_page: ROOT:00-index.adoc
+
 asciidoc:
   attributes:
     lab_name: "I'm the lab_name var"
