@@ -13,7 +13,8 @@ asciidoc:
   attributes:
     page-pagination: true
     openshift_console_url: https://console.apps.cluster.example.com
-    openshift_cluster_admin_username: user
-    openshift_cluster_admin_password: password
+    # openshift_cluster_admin_username: user
+    # openshift_cluster_admin_password: password
+    user: user
+    password: password
     openshift_cluster_ingress_domain: apps.cluster.example.com
-    openshift_gitops_server: https://openshift-gitops-server-openshift-gitops.apps.cluster.example.com

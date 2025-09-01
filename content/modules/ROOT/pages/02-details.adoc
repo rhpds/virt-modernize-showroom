@@ -64,7 +64,7 @@ include::vars.adoc[]
 |link:{ocp4_virt_console_url}[OpenShift Console^] |{ocp4_virt_username} |{ocp4_virt_password}
 |link:{ocp4_virt_kiali_url}[Kiali Dashboard^] |{ocp4_virt_username} |{ocp4_virt_password}
 |link:{ocp4_virt_grafana_url}[Grafana Dashboard^] |{ocp4_virt_username} |{ocp4_virt_password}
-|link:{ocp4_virt_argocd_url}[ArgoCD Console^] |use openshfit |use openshfit
+|link:{ocp4_virt_argocd_url}[ArgoCD Console^] |login via openshift |N/A
 |===
 
 == Troubleshooting Common Issues
